@@ -5,10 +5,11 @@ const useResults = () => {
   const [results, setResults] = useState([]);
 
   const onSearchAction = async (defaultSearch = "") => {
+    console.log(defaultSearch || searchText);
     const { data } = await yelpApi.get("/search", {
       params: {
-        limit: 10,
-        tern: defaultSearch || searchText,
+        limit: 50,
+        term: defaultSearch || searchText,
         location: "San jose",
       },
     });
@@ -16,7 +17,7 @@ const useResults = () => {
   };
 
   useEffect(() => {
-    onSearchAction("pizza");
+    onSearchAction("burger");
   }, []);
 
   return [results, onSearchAction];

@@ -12,12 +12,16 @@ const HomeScreen = () => {
     setSearchText(newValue);
   };
 
+  const searchRestaurant = async () => {
+    await onSearchAction(searchText);
+  };
+
   return (
     <View style={styles.container}>
       <SearchBar
         searchValue={searchText}
         onSerchValueChange={updateSearchText}
-        onSearchEndEditing={onSearchAction}
+        onSearchEndEditing={searchRestaurant}
       />
       <RestaurantList results={results} />
     </View>
