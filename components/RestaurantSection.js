@@ -1,24 +1,21 @@
 import { StyleSheet, FlatList, View } from "react-native";
 import RestaurantCard from "./RestaurantCard";
-import TextStyled, { TextSizes } from "./common/TextStyled";
+import { H1 } from "./common/TextStyled";
 
 const RestaurantSection = ({ title, results }) => {
   return (
     results.length > 0 && (
       <View style={styles.container}>
-        <TextStyled
-          fontBold
-          size={TextSizes.LARGE}
-          className={styles.titleStyled}
-        >
+        <H1 fontBold className={styles.titleStyled}>
           {title}
-        </TextStyled>
+        </H1>
         <FlatList
           showsHorizontalScrollIndicator={false}
           horizontal
           data={results}
           renderItem={({ item }) => (
             <RestaurantCard
+              id={item.id}
               title={item.name}
               starsQuantity={item.rating}
               reviewsQuantity={item.review_count}
