@@ -13,10 +13,9 @@ export default function App() {
       <Stack.Navigator
         initialRouteName="Home"
         screenOptions={{
-          cardStyle: {
-            backgroundColor: "red",
-            shadowColor: "red",
-          },
+          headerShown: true,
+          headerTitle: false,
+          headerBackTitleVisible: false,
         }}
       >
         <Stack.Screen name="Business Search" component={HomeScreen} />
@@ -25,10 +24,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "red",
-    opacity: 1,
-  },
-});
