@@ -1,22 +1,25 @@
-import { View, Text, Image, StyleSheet } from "react-native";
-import TextStyled, { TextColors, TextSizes } from "./common/TextStyled";
+import { View, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { TextStyled, SmallText, TextColors } from "./common/TextStyled";
+import { useNavigation } from "@react-navigation/native";
 
-const RestaurantCard = ({ src, title, starsQuantity, reviewsQuantity }) => {
+const RestaurantCard = ({ id, src, title, starsQuantity, reviewsQuantity }) => {
+  const navigation = useNavigation();
+
   return (
-    <View style={styles.container}>
-      <Image style={styles.image} source={{ uri: src }} />
-      <TextStyled fontBold>{title}</TextStyled>
-      <View style={styles.ratings}>
-        <TextStyled
-          color={TextColors.SECONDARY}
-          size={TextSizes.SMALL}
-        >{`${starsQuantity} Stars`}</TextStyled>
-        <TextStyled
-          color={TextColors.SECONDARY}
-          size={TextSizes.SMALL}
-        >{`${reviewsQuantity} Reviews`}</TextStyled>
+    <TouchableOpacity onPress={() => navigation.navigate("Details", { id })}>
+      <View style={styles.container}>
+        <Image style={styles.image} source={{ uri: src }} />
+        <TextStyled fontBold>{title}</TextStyled>
+        <View style={styles.ratings}>
+          <SmallText
+            color={TextColors.SECONDARY}
+          >{`${starsQuantity} Stars`}</SmallText>
+          <SmallText
+            color={TextColors.SECONDARY}
+          >{`${reviewsQuantity} Reviews`}</SmallText>
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
