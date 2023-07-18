@@ -4,12 +4,11 @@ import yelpApi from "../api/yelp.api";
 const useResults = () => {
   const [results, setResults] = useState([]);
 
-  const onSearchAction = async (defaultSearch = "") => {
-    console.log(defaultSearch || searchText);
+  const onSearchAction = async (searchText = "") => {
     const { data } = await yelpApi.get("/search", {
       params: {
         limit: 50,
-        term: defaultSearch || searchText,
+        term: searchText,
         location: "San jose",
       },
     });
